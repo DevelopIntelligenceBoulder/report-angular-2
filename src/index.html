@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Simple Angular Reporting tool</title>
+        <link rel="stylesheet" href="css/lib/normalize.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Kite+One">
+        <link rel="stylesheet" href="css/lib/font-awesome.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body class="give-page">
+        <report-app></report-app>
+
+        <script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
+        <script src="/node_modules/systemjs/dist/system.src.js"></script>
+        <script src="/node_modules/rxjs/bundles/Rx.js"></script>
+        <script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
+
+        <!-- System JS to load the Hello Module -->
+        <script>
+            System.import('bootstrap.js');
+        </script>
+    </body>
+</html>
