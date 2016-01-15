@@ -1,0 +1,24 @@
+{
+  "name": "report-angular-2",
+  "version": "0.0.1",
+  "description": "Angular 2.x Reporting Tool",
+  "scripts": {
+    "start": "node server.js",
+    "prestart": "npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DevelopIntelligenceBoulder/report-angular-2.git"
+  },
+  "author": "Kamren Zorgdrager <kamrenz@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/DevelopIntelligenceBoulder/report-angular-2",
+  "devDependencies": {
+    "express": "^4.12.4"
+  },
+  "dependencies": {
+    "angular2": "^2.0.0-beta.1",
+    "rxjs": "^5.0.0-beta.0",
+    "systemjs": "^0.19.15"
+  }
+}
