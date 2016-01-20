@@ -8,10 +8,12 @@ import { ReportFormControl } from "./report-form-control";
 import { ReportForm } from "./report-form";
 import { ReportList } from "./report-list";
 import { Report } from "../objects/report";
+import { ReportsService } from "../services/reports-service";
 
 @Component({
     selector: 'report-app',
     directives: [ReportHeader, ReportFormControl, ReportForm, ReportList],
+    providers: [ReportsService],
     template: `
         <report-header></report-header>
         <div class="grid" id="content">
@@ -33,13 +35,9 @@ export class ReportApp {
     reports: Report[];
     isFormVisible: boolean;
 
-    constructor() {
-        this.reports = [
-            new Report('1', '1-1-2012', '500', '750', '400'),
-            new Report('2', '2-1-2012', '425', '650', '300'),
-            new Report('3', '3-1-2012', '300', '450', '300'),
-            new Report('4', '4-1-2012', '600', '750', '400')
-        ];
+    //Making it public allows for use in the addReport() below
+    constructor(public reportsService: ReportsService) {
+        this.reports = reportsService.reports;
         this.isFormVisible = false;
     }
 
@@ -48,15 +46,6 @@ export class ReportApp {
     }
 
     addReport(report: any): void {
-        //Make it a string based id
-        const id = this.reports.length + 1 + '';
-        const newReport = new Report(
-            id,
-            report.reportDate,
-            report.quantity,
-            report.netSales,
-            report.costOfGoods
-        )
-        this.reports.push(newReport);
+        this.reportsService.add(report);
     }
 }
