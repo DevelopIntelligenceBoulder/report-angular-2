@@ -123,6 +123,8 @@ export class ReportForm {
     }
 
     clearValues(): void {
+        //Need to cast AbstractControl as Control
+        //  Control has the .updateValue method
         (this.reportDate as Control).updateValue("");
         (this.quantity as Control).updateValue("");
         (this.netSales as Control).updateValue("");

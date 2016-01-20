@@ -60,6 +60,8 @@ System.register(["angular2/core", "angular2/common"], function(exports_1) {
                     return hasErrors;
                 };
                 ReportForm.prototype.clearValues = function () {
+                    //Need to cast AbstractControl as Control
+                    //  Control has the .updateValue method
                     this.reportDate.updateValue("");
                     this.quantity.updateValue("");
                     this.netSales.updateValue("");
