@@ -1,3 +1,4 @@
+/// <reference path="../../../node_modules/angular2/core.d.ts" />
 /**
  * Report Control allows for the hiding/showing of the form component.
  */

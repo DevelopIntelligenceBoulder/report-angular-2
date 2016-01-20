@@ -1,3 +1,4 @@
+/// <reference path="../../../node_modules/angular2/core.d.ts" />
 /**
  * Report List handles the report listing.
  **/
@@ -5,9 +6,9 @@ import {
     Component,
     EventEmitter
 } from "angular2/core";
-import { ReportCard } from "./report-card.js";
-import { ReportFilterCard } from "./report-filter-card.js";
-import { Report } from "../objects/report.js";
+import { ReportCard } from "./report-card";
+import { ReportFilterCard } from "./report-filter-card";
+import { Report } from "../objects/report";
 
 @Component({
     selector: 'report-list',
@@ -36,7 +37,6 @@ export class ReportList {
 
     constructor() {
         this.filteredList = [];
-        console.log('constructor');
     }
 
     reportFiltered(): Report[] {
@@ -45,12 +45,11 @@ export class ReportList {
 
     changeIt(cardsShown: number): void {
         this.filteredList = this.reportList.slice(0, cardsShown);
-        console.log(this.filteredList);
     }
 
+    //Component lifecycle
+    //  Invoked after component content has been initialized
     ngAfterContentInit() {
-        // Component content has been initialized
-        console.log('after');
         this.filteredList = this.reportList;
     }
 

@@ -1,3 +1,4 @@
+/// <reference path="../../../node_modules/angular2/core.d.ts" />
 /**
  * Header component.
  **/

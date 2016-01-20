@@ -1,8 +1,9 @@
+/// <reference path="../../../node_modules/angular2/core.d.ts" />
 /**
  * Header component.
  **/
 import { Component } from "angular2/core";
-import { Report } from "../objects/report.js";
+import { Report } from "../objects/report";
 
 @Component({
     selector: 'report-card',
@@ -49,6 +50,6 @@ export class ReportCard {
     }
 
     isOdd(): boolean {
-        return this.index % 2;
+        return Boolean(this.index % 2);
     }
 }

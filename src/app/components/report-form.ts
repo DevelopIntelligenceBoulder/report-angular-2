@@ -1,3 +1,5 @@
+/// <reference path="../../../node_modules/angular2/core.d.ts" />
+/// <reference path="../../../node_modules/angular2/common.d.ts" />
 /**
  * Report Form handles the ability to add a report.
  **/
@@ -93,7 +95,7 @@ export class ReportForm {
         this.onFormSubmission = new EventEmitter();
     }
 
-    onSubmit(formValues: string): void {
+    onSubmit(formValues: any): void {
         //Send event with form
         const report = {
             reportDate: formValues.reportDate,
@@ -121,9 +123,9 @@ export class ReportForm {
     }
 
     clearValues(): void {
-        this.reportDate.updateValue("");
-        this.quantity.updateValue("");
-        this.netSales.updateValue("");
-        this.costOfGoods.updateValue("");
+        (this.reportDate as Control).updateValue("");
+        (this.quantity as Control).updateValue("");
+        (this.netSales as Control).updateValue("");
+        (this.costOfGoods as Control).updateValue("");
     }
 }

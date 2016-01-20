@@ -1,3 +1,5 @@
+/// <reference path="../../../node_modules/angular2/core.d.ts" />
+/// <reference path="../../../node_modules/angular2/common.d.ts" />
 /**
  * Report List handles the report listing.
  **/
@@ -35,7 +37,9 @@ export class ReportFilterCard {
     numOfRows: AbstractControl;
     onFilterChange: EventEmitter<number>;
 
-    constructor(@Inject(FormBuilder) fb: FormBuilder) {
+    //Previously Typescript errors... didn't recognize injection
+    // constructor(@Inject(FormBuilder) fb: FormBuilder) {
+    constructor(fb: FormBuilder) {
         this.filterCardForm = fb.group({
             'numOfRows': ['', Validators.required]
         })

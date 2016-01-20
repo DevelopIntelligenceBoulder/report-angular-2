@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Simple Angular Reporting tool</title>
-        <link rel="stylesheet" href="css/lib/normalize.css">
+        <link rel="stylesheet" href="app/css/lib/normalize.css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Kite+One">
-        <link rel="stylesheet" href="css/lib/font-awesome.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="app/css/lib/font-awesome.css">
+        <link rel="stylesheet" href="app/css/main.css">
     </head>
     <body class="give-page">
         <report-app></report-app>
@@ -19,7 +19,18 @@
 
         <!-- System JS to load the Hello Module -->
         <script>
-            System.import('bootstrap.js');
+            System.config({
+                packages: {
+                    app: {
+                        //System JS module loading
+                        format: 'register',
+                        defaultExtension: 'js'
+                    }
+                }
+            });
+        </script>
+        <script>
+            System.import('app/bootstrap');
         </script>
     </body>
 </html>
