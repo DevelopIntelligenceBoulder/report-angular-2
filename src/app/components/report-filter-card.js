@@ -30,7 +30,6 @@ System.register(["angular2/core", "angular2/common"], function(exports_1) {
                     this.numOfRows = this.filterCardForm.controls['numOfRows'];
                     this.numOfRows.valueChanges.subscribe(function (value) {
                         if (Number(value) && Number(value) >= 0) {
-                            console.log('numOfRows changed to: ', value);
                             _this.onFilterChange.emit(Number(value));
                         }
                     });

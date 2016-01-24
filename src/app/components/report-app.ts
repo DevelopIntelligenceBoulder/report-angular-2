@@ -3,7 +3,7 @@
  * Report App is the top-level component for the Report Application.
  **/
 import { Component } from "angular2/core";
-import { ReportHeader } from "./header";
+import { ReportHeader } from "./report-header";
 import { ReportFormControl } from "./report-form-control";
 import { ReportForm } from "./report-form";
 import { ReportList } from "./report-list";
@@ -41,8 +41,15 @@ export class ReportApp {
         this.isFormVisible = false;
     }
 
-    toggleVisibility(isVisible: boolean) {
+    toggleVisibility(isVisible: boolean): void {
         this.isFormVisible = isVisible;
+    }
+
+    ngOnInit(): void {
+        this.reportsService.init()
+            .subscribe(()=>{
+                this.reports = this.reportsService.getReports();
+            });
     }
 
     addReport(report: any): void {

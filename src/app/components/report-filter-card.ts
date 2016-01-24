@@ -48,7 +48,6 @@ export class ReportFilterCard {
 
         this.numOfRows.valueChanges.subscribe( (value: string) => {
             if(Number(value) && Number(value)>=0) {
-                console.log('numOfRows changed to: ', value);
                 this.onFilterChange.emit(Number(value));
             }
         });

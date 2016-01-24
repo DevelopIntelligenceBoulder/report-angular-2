@@ -32,11 +32,6 @@ System.register(["angular2/core", "./report-card", "./report-filter-card"], func
                 ReportList.prototype.changeIt = function (cardsShown) {
                     this.filteredList = this.reportList.slice(0, cardsShown);
                 };
-                //Component lifecycle
-                //  Invoked after component content has been initialized
-                ReportList.prototype.ngAfterContentInit = function () {
-                    this.filteredList = this.reportList;
-                };
                 ReportList = __decorate([
                     core_1.Component({
                         selector: 'report-list',

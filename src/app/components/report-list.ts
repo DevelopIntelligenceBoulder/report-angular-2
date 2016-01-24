@@ -47,10 +47,4 @@ export class ReportList {
         this.filteredList = this.reportList.slice(0, cardsShown);
     }
 
-    //Component lifecycle
-    //  Invoked after component content has been initialized
-    ngAfterContentInit() {
-        this.filteredList = this.reportList;
-    }
-
 }
