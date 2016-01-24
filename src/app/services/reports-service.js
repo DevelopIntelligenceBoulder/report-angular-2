@@ -1,5 +1,7 @@
 /// <reference path="../../../node_modules/angular2/core.d.ts" />
-System.register(['angular2/core', '../objects/report'], function(exports_1) {
+/// <reference path="../../../node_modules/angular2/http.d.ts" />
+/// <reference path="../../../node_modules/rxjs/RX.d.ts" />
+System.register(['rxjs/add/operator/map', 'angular2/core', 'angular2/http', '../objects/report'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,26 +11,43 @@ System.register(['angular2/core', '../objects/report'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, report_1;
+    var core_1, http_1, report_1;
     var ReportsService;
     return {
         setters:[
+            function (_1) {},
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
             },
             function (report_1_1) {
                 report_1 = report_1_1;
             }],
         execute: function() {
             ReportsService = (function () {
-                function ReportsService() {
-                    this.reports = [
-                        new report_1.Report('1', '1-1-2012', '500', '750', '400'),
-                        new report_1.Report('2', '2-1-2012', '425', '650', '300'),
-                        new report_1.Report('3', '3-1-2012', '300', '450', '300'),
-                        new report_1.Report('4', '4-1-2012', '600', '750', '400')
-                    ];
+                //Placing http on the object instance
+                // i.e. this.http
+                function ReportsService(http) {
+                    this.http = http;
+                    this.reports = [];
                 }
+                ReportsService.prototype.init = function () {
+                    var _this = this;
+                    var URL = 'http://lemon-aide-api.azurewebsites.net/data/reports';
+                    return this.http.get(URL)
+                        .map(function (response) {
+                        var data = response.json();
+                        _this.reports = data.map(function (report) {
+                            return new report_1.Report(report.id, report.date, report.quantity, report.netSale, report.costOfGoods);
+                        });
+                        console.log(data);
+                    });
+                };
+                ReportsService.prototype.getReports = function () {
+                    return this.reports;
+                };
                 ReportsService.prototype.add = function (report) {
                     //Make it a string based id
                     var id = this.reports.length + 1 + '';
@@ -37,7 +56,7 @@ System.register(['angular2/core', '../objects/report'], function(exports_1) {
                 };
                 ReportsService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], ReportsService);
                 return ReportsService;
             })();
